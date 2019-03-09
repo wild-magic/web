@@ -1,4 +1,9 @@
 const withTypescript = require('@zeit/next-typescript');
-module.exports = withTypescript({
-  target: 'serverless',
-});
+const withLess = require('@zeit/next-less');
+
+module.exports = withTypescript(
+  withLess({
+    target: 'serverless',
+    cssModules: true,
+  })
+);
