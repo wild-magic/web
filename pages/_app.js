@@ -1,6 +1,8 @@
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
+import Router from 'next/router';
+import withGA from 'next-ga';
 import withReduxStore from '../lib/with-redux-store';
 import { Provider } from 'react-redux';
 import wildmagicon from '../assets/images/wild-magicon.png';
@@ -13,20 +15,6 @@ class MyApp extends App {
     return (
       <Container>
         <Head>
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-105796271-5"
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-105796271-5');`,
-            }}
-          />
-
           <title>WildMagic | Games, but like for 2019</title>
           <meta name="theme-color" content="#FCE5FF" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,4 +38,4 @@ class MyApp extends App {
   }
 }
 
-export default withReduxStore(MyApp);
+export default withGA('UA-105796271-5', Router)(withReduxStore(MyApp));
