@@ -1,6 +1,5 @@
 import React from 'react';
 import { initializeStore } from '../store';
-import entities from '../Game/entities';
 
 const isServer = typeof window === 'undefined';
 const __NEXT_REDUX_STORE__ = '__NEXT_REDUX_STORE__';
@@ -23,7 +22,7 @@ export default App => {
     static async getInitialProps(appContext) {
       // Get or Create the store with `undefined` as initialState
       // This allows you to set a custom default initialState
-      const reduxStore = getOrCreateStore({ entities });
+      const reduxStore = getOrCreateStore({ entities: {} });
 
       // Provide the store to getInitialProps of pages
       appContext.ctx.reduxStore = reduxStore;
