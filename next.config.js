@@ -8,6 +8,13 @@ module.exports = withTypescript(
   withImages(
     withFonts(
       withLess({
+        webpack(config, options) {
+          config.module.rules.push({
+            test: /\.md$/,
+            use: 'raw-loader',
+          });
+          return config;
+        },
         target: 'serverless',
         cssModules: true,
       })
